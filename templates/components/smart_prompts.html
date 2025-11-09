@@ -1,0 +1,185 @@
+<!-- Smart Prompts Library Component -->
+<div id="smart-prompts-panel" class="prompts-panel" style="display: none;">
+    <div class="prompts-panel-header">
+        <h2>Smart Prompts Library</h2>
+        <button class="close-btn" onclick="SmartPrompts.closePanel()">&times;</button>
+    </div>
+
+    <div class="prompts-panel-content">
+        <!-- Search Bar -->
+        <div class="prompts-search-section">
+            <input
+                type="text"
+                id="prompts-search-input"
+                class="prompts-search-input"
+                placeholder="Search prompts..."
+                onkeyup="SmartPrompts.searchPrompts()"
+            >
+        </div>
+
+        <!-- Category Filter -->
+        <div class="prompts-category-section">
+            <div class="category-tabs" id="category-tabs">
+                <button class="category-tab active" data-category="">All</button>
+            </div>
+        </div>
+
+        <!-- Popular Prompts Section -->
+        <div class="popular-prompts-section" id="popular-prompts-section">
+            <h3>Most Used</h3>
+            <div class="popular-prompts-list" id="popular-prompts-list">
+                <!-- Popular prompts will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Prompts List -->
+        <div class="prompts-list-section">
+            <div class="prompts-list-header">
+                <h3>All Prompts</h3>
+                <button class="btn-create-prompt" onclick="SmartPrompts.showCreateModal()">
+                    <span>+</span> New Prompt
+                </button>
+            </div>
+            <div class="prompts-list" id="prompts-list">
+                <!-- Prompts will be loaded here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create/Edit Prompt Modal -->
+<div id="prompt-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modal-title">Create New Prompt</h2>
+            <button class="close-btn" onclick="SmartPrompts.closeModal()">&times;</button>
+        </div>
+        <form id="prompt-form" onsubmit="SmartPrompts.savePrompt(event)">
+            <div class="form-group">
+                <label for="prompt-title">Title *</label>
+                <input
+                    type="text"
+                    id="prompt-title"
+                    name="title"
+                    required
+                    placeholder="e.g., Compliance Matrix"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="prompt-text">Prompt Text *</label>
+                <textarea
+                    id="prompt-text"
+                    name="prompt_text"
+                    required
+                    rows="6"
+                    placeholder="Enter your prompt text here..."
+                ></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="prompt-category">Category</label>
+                    <select id="prompt-category" name="category">
+                        <option value="">Select a category</option>
+                        <option value="Tender Response">Tender Response</option>
+                        <option value="Pricing & Commercial">Pricing & Commercial</option>
+                        <option value="Team & Capabilities">Team & Capabilities</option>
+                        <option value="Analysis">Analysis</option>
+                        <option value="Strategy">Strategy</option>
+                        <option value="Compliance">Compliance</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="prompt-response-mode">Response Mode</label>
+                    <select id="prompt-response-mode" name="response_mode">
+                        <option value="">Select mode</option>
+                        <option value="precise">Precise</option>
+                        <option value="comprehensive">Comprehensive</option>
+                        <option value="strategy">Strategy</option>
+                        <option value="tender">Tender</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-secondary" onclick="SmartPrompts.closeModal()">
+                    Cancel
+                </button>
+                <button type="submit" class="btn-primary" id="save-prompt-btn">
+                    Save Prompt
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="delete-confirm-modal" class="modal" style="display: none;">
+    <div class="modal-content modal-small">
+        <div class="modal-header">
+            <h2>Confirm Delete</h2>
+            <button class="close-btn" onclick="SmartPrompts.closeDeleteModal()">&times;</button>
+        </div>
+        <p>Are you sure you want to delete this prompt? This action cannot be undone.</p>
+        <div class="modal-actions">
+            <button class="btn-secondary" onclick="SmartPrompts.closeDeleteModal()">
+                Cancel
+            </button>
+            <button class="btn-danger" onclick="SmartPrompts.confirmDelete()">
+                Delete
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Prompt Card Template -->
+<template id="prompt-card-template">
+    <div class="prompt-card" data-prompt-id="">
+        <div class="prompt-card-header">
+            <h4 class="prompt-title"></h4>
+            <div class="prompt-actions">
+                <button class="btn-use" title="Use this prompt">
+                    <span>Use</span>
+                </button>
+                <button class="btn-edit" title="Edit prompt">
+                    <span>✎</span>
+                </button>
+                <button class="btn-delete" title="Delete prompt">
+                    <span>🗑</span>
+                </button>
+            </div>
+        </div>
+        <div class="prompt-card-body">
+            <p class="prompt-text"></p>
+        </div>
+        <div class="prompt-card-footer">
+            <span class="prompt-category-badge"></span>
+            <span class="prompt-response-mode"></span>
+            <span class="prompt-usage-count">
+                <span class="usage-icon">📊</span>
+                <span class="usage-number"></span> uses
+            </span>
+        </div>
+    </div>
+</template>
+
+<!-- Popular Prompt Card Template -->
+<template id="popular-prompt-template">
+    <div class="popular-prompt-card" data-prompt-id="">
+        <div class="popular-prompt-header">
+            <span class="popular-prompt-title"></span>
+            <button class="btn-use-small">Use</button>
+        </div>
+        <div class="popular-prompt-footer">
+            <span class="popular-prompt-category"></span>
+            <span class="popular-prompt-usage"></span>
+        </div>
+    </div>
+</template>
+
+<!-- Prompts Library Toggle Button -->
+<button id="prompts-toggle-btn" class="prompts-toggle-btn" onclick="SmartPrompts.togglePanel()">
+    📚 Smart Prompts
+</button>

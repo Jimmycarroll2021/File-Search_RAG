@@ -1,0 +1,114 @@
+/**
+ * CSS Variables System
+ * Defines color scheme and design tokens for light and dark themes
+ */
+
+:root {
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --bg-gradient-start: #667eea;
+  --bg-gradient-end: #764ba2;
+
+  /* Text Colors */
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --text-label: #555555;
+  --text-on-gradient: #ffffff;
+
+  /* Accent Colors */
+  --accent-primary: #667eea;
+  --accent-secondary: #764ba2;
+  --accent-hover: #764ba2;
+
+  /* Border Colors */
+  --border-color: #e0e0e0;
+  --border-dashed: #667eea;
+  --border-dashed-hover: #764ba2;
+  --border-accent: #667eea;
+
+  /* Shadow Colors */
+  --shadow-light: rgba(0, 0, 0, 0.3);
+  --shadow-button: rgba(102, 126, 234, 0.4);
+  --shadow-loader: #f3f3f3;
+
+  /* Status Colors */
+  --status-success-bg: #d4edda;
+  --status-success-text: #155724;
+  --status-success-border: #c3e6cb;
+  --status-error-bg: #f8d7da;
+  --status-error-text: #721c24;
+  --status-error-border: #f5c6cb;
+
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 30px;
+  --spacing-xxl: 40px;
+
+  /* Border Radius */
+  --radius-sm: 2px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 20px;
+
+  /* Transitions */
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+
+  /* Font Sizes */
+  --font-xs: 0.9em;
+  --font-sm: 1em;
+  --font-md: 1.2em;
+  --font-lg: 2em;
+
+  /* Z-index */
+  --z-header: 100;
+  --z-modal: 1000;
+  --z-dropdown: 500;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+  /* Background Colors */
+  --bg-primary: #1a1d23;
+  --bg-secondary: #22262e;
+  --bg-tertiary: #2a2f38;
+  --bg-gradient-start: #4a5899;
+  --bg-gradient-end: #5a3c7a;
+
+  /* Text Colors */
+  --text-primary: #e6e8ea;
+  --text-secondary: #b0b3b8;
+  --text-tertiary: #8a8d91;
+  --text-label: #c4c7cc;
+  --text-on-gradient: #ffffff;
+
+  /* Accent Colors */
+  --accent-primary: #7c96ff;
+  --accent-secondary: #9464c4;
+  --accent-hover: #9464c4;
+
+  /* Border Colors */
+  --border-color: #3a3f4b;
+  --border-dashed: #7c96ff;
+  --border-dashed-hover: #9464c4;
+  --border-accent: #7c96ff;
+
+  /* Shadow Colors */
+  --shadow-light: rgba(0, 0, 0, 0.6);
+  --shadow-button: rgba(124, 150, 255, 0.4);
+  --shadow-loader: #2a2f38;
+
+  /* Status Colors */
+  --status-success-bg: #1e4620;
+  --status-success-text: #7fd87f;
+  --status-success-border: #2d5f2f;
+  --status-error-bg: #4a1f23;
+  --status-error-text: #ff9999;
+  --status-error-border: #6b2e33;
+}

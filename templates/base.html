@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Google Gemini File Search{% endblock %}</title>
+
+    <!-- CSS Variables and Theme System -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-mode.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/layout.css') }}">
+
+    <!-- Page-specific styles -->
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <!-- Header with Theme Toggle -->
+    <header>
+        <h1>{% block header_title %}Google Gemini File Search{% endblock %}</h1>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+            <span class="theme-icon sun">☀️</span>
+            <span class="theme-icon moon">🌙</span>
+        </button>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        {% block content %}
+        <!-- Page-specific content goes here -->
+        {% endblock %}
+    </main>
+
+    <!-- Theme Manager Script (loads first to prevent flash) -->
+    <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
+
+    <!-- Base scripts -->
+    {% block scripts %}{% endblock %}
+</body>
+</html>

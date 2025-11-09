@@ -1,0 +1,294 @@
+/**
+ * Markdown Content Styling
+ * Styles for rendered markdown content with proper spacing and typography
+ */
+
+/* Base markdown container */
+.markdown-content,
+.response-area {
+    line-height: 1.6;
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Headers */
+.markdown-content h1,
+.response-area h1 {
+    font-size: 2em;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e0e0e0;
+    color: #1a1a1a;
+}
+
+.markdown-content h1:first-child,
+.response-area h1:first-child {
+    margin-top: 0;
+}
+
+.markdown-content h2,
+.response-area h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #1a1a1a;
+}
+
+.markdown-content h3,
+.response-area h3 {
+    font-size: 1.25em;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+.markdown-content h4,
+.response-area h4 {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.markdown-content h5,
+.response-area h5 {
+    font-size: 1em;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.markdown-content h6,
+.response-area h6 {
+    font-size: 0.95em;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    color: #666;
+}
+
+/* Paragraphs */
+.markdown-content p,
+.response-area p {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+/* Inline code */
+.markdown-content code.inline-code,
+.response-area code.inline-code {
+    background: #f6f8fa;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #e83e8c;
+    border: 1px solid #e0e0e0;
+}
+
+/* Links */
+.markdown-content a,
+.response-area a {
+    color: #667eea;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.markdown-content a:hover,
+.response-area a:hover {
+    border-bottom-color: #667eea;
+}
+
+.markdown-content a:visited,
+.response-area a:visited {
+    color: #764ba2;
+}
+
+/* Bold and italic */
+.markdown-content strong,
+.response-area strong {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.markdown-content em,
+.response-area em {
+    font-style: italic;
+}
+
+/* Lists */
+.markdown-content ul,
+.response-area ul,
+.markdown-content ol,
+.response-area ol {
+    margin-top: 0;
+    margin-bottom: 16px;
+    padding-left: 2em;
+}
+
+.markdown-content li,
+.response-area li {
+    margin-bottom: 4px;
+}
+
+.markdown-content li > p,
+.response-area li > p {
+    margin-bottom: 8px;
+}
+
+.markdown-content ul ul,
+.response-area ul ul,
+.markdown-content ul ol,
+.response-area ul ol,
+.markdown-content ol ul,
+.response-area ol ul,
+.markdown-content ol ol,
+.response-area ol ol {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+/* Blockquotes */
+.markdown-content blockquote,
+.response-area blockquote {
+    margin: 16px 0;
+    padding: 12px 20px;
+    border-left: 4px solid #667eea;
+    background: #f8f9fa;
+    color: #555;
+    font-style: italic;
+}
+
+.markdown-content blockquote p,
+.response-area blockquote p {
+    margin-bottom: 8px;
+}
+
+.markdown-content blockquote p:last-child,
+.response-area blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* Horizontal rules */
+.markdown-content hr,
+.response-area hr {
+    height: 0;
+    margin: 24px 0;
+    border: 0;
+    border-top: 2px solid #e0e0e0;
+}
+
+/* Tables */
+.markdown-content table,
+.response-area table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.95em;
+}
+
+.markdown-content table th,
+.response-area table th {
+    background: #f6f8fa;
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    color: #333;
+}
+
+.markdown-content table td,
+.response-area table td {
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+}
+
+.markdown-content table tr:nth-child(even),
+.response-area table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.markdown-content table tr:hover,
+.response-area table tr:hover {
+    background: #f5f5f5;
+}
+
+/* Responsive table wrapper */
+.markdown-content .table-wrapper,
+.response-area .table-wrapper {
+    overflow-x: auto;
+    margin: 16px 0;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+}
+
+.markdown-content .table-wrapper table,
+.response-area .table-wrapper table {
+    margin: 0;
+    border: 0;
+}
+
+/* Image styling */
+.markdown-content img,
+.response-area img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 16px 0;
+}
+
+/* Error message */
+.markdown-content .markdown-error,
+.response-area .markdown-error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px 16px;
+    border-radius: 4px;
+    border: 1px solid #f5c6cb;
+    margin: 16px 0;
+}
+
+.markdown-content .markdown-error strong,
+.response-area .markdown-error strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .markdown-content h1,
+    .response-area h1 {
+        font-size: 1.75em;
+    }
+
+    .markdown-content h2,
+    .response-area h2 {
+        font-size: 1.4em;
+    }
+
+    .markdown-content h3,
+    .response-area h3 {
+        font-size: 1.2em;
+    }
+
+    .markdown-content table,
+    .response-area table {
+        font-size: 0.9em;
+    }
+
+    .markdown-content table th,
+    .response-area table th,
+    .markdown-content table td,
+    .response-area table td {
+        padding: 8px;
+    }
+}

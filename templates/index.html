@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/forms.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/upload.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/modes.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='lib/highlight-github.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/markdown.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/code-highlight.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Google Gemini File Search</h1>
+        <p class="subtitle">Upload documents and ask questions using AI-powered semantic search</p>
+
+        <!-- File Upload Section -->
+        <div class="section">
+            <div class="section-title">Upload Documents</div>
+            <div class="input-group">
+                <label for="storeName">Store Name (optional)</label>
+                <input type="text" id="storeName" placeholder="my-file-search-store" value="my-file-search-store">
+            </div>
+            <div class="file-upload-area" id="uploadArea">
+                <div class="upload-icon">📁</div>
+                <p><strong>Click to browse</strong> or drag and drop your file here</p>
+                <p style="color: var(--text-tertiary); font-size: 0.9em; margin-top: 10px;">Supported: PDF, DOCX, TXT, and more (Max 100MB)</p>
+                <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.txt,.md,.json,.csv,.xls,.xlsx">
+            </div>
+            <div class="file-info" id="fileInfo"></div>
+            <div class="status-message" id="uploadStatus"></div>
+
+            <!-- Bulk Upload Button -->
+            <div style="margin-top: 16px; text-align: center;">
+                <button class="btn btn-secondary" onclick="openBulkUploadModal()" style="padding: 12px 24px;">
+                    📦 Bulk Upload from Directory
+                </button>
+            </div>
+        </div>
+
+        <!-- Response Modes Section -->
+        <div class="section">
+            {% include 'components/response_modes.html' %}
+        </div>
+
+        <!-- Query Section -->
+        <div class="section">
+            <div class="section-title">Ask Questions</div>
+            <div class="input-group">
+                <label for="questionInput">Your Question</label>
+                <textarea id="questionInput" placeholder="Enter your question about the uploaded documents..."></textarea>
+            </div>
+            <button id="queryBtn">Ask Question</button>
+            <div class="status-message" id="queryStatus"></div>
+            <div class="response-area" id="responseArea"></div>
+        </div>
+    </div>
+
+    <!-- Include Bulk Upload Modal -->
+    {% include 'components/bulk_upload.html' %}
+{% endblock %}
+
+{% block scripts %}
+    <!-- Markdown rendering libraries -->
+    <script src="{{ url_for('static', filename='lib/marked.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/highlight.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/markdown-renderer.js') }}"></script>
+
+    <!-- Response modes script -->
+    <script src="{{ url_for('static', filename='js/response-modes.js') }}"></script>
+
+    <!-- Bulk upload script -->
+    <script src="{{ url_for('static', filename='js/bulk-upload.js') }}"></script>
+
+    <!-- Main application script -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

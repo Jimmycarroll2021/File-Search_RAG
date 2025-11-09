@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Compliance Matrix",
+    "prompt_text": "Generate a detailed compliance matrix showing how our capabilities align with each requirement in the tender documents. Include specific evidence from our past work and reference relevant sections of our documentation.",
+    "category": "Tender Response",
+    "response_mode": "comprehensive"
+  },
+  {
+    "title": "Executive Summary",
+    "prompt_text": "Create a compelling executive summary for this tender response that highlights our key differentiators, value proposition, and why we are the best choice for this project.",
+    "category": "Tender Response",
+    "response_mode": "comprehensive"
+  },
+  {
+    "title": "Methodology & Approach",
+    "prompt_text": "Develop a detailed methodology and approach section that outlines how we will deliver this project, including key phases, deliverables, and quality assurance processes.",
+    "category": "Tender Response",
+    "response_mode": "comprehensive"
+  },
+  {
+    "title": "Risk Assessment",
+    "prompt_text": "Identify and analyze potential risks associated with this tender, including technical, commercial, and delivery risks. Provide mitigation strategies for each identified risk.",
+    "category": "Tender Response",
+    "response_mode": "comprehensive"
+  },
+  {
+    "title": "Pricing Benchmarks",
+    "prompt_text": "Find pricing benchmarks and market rates for similar projects or services mentioned in the tender documents. Compare our proposed pricing with industry standards.",
+    "category": "Pricing & Commercial",
+    "response_mode": "precise"
+  },
+  {
+    "title": "Budget Breakdown",
+    "prompt_text": "Generate a detailed budget breakdown for this project, including labor costs, materials, overhead, and contingencies. Ensure all costs are justified and aligned with the scope of work.",
+    "category": "Pricing & Commercial",
+    "response_mode": "comprehensive"
+  },
+  {
+    "title": "Cost Justification",
+    "prompt_text": "Provide detailed justification for our proposed pricing, demonstrating value for money and return on investment for the client.",
+    "category": "Pricing & Commercial",
+    "response_mode": "comprehensive"
+  },
+  {
+    "title": "Team Matching",
+    "prompt_text": "Identify suitable team members from our organization who match the skills and experience requirements specified in the tender. Provide brief profiles highlighting relevant qualifications.",
+    "category": "Team & Capabilities",
+    "response_mode": "precise"
+  },
+  {
+    "title": "Capability Statement",
+    "prompt_text": "Generate a comprehensive capability statement that demonstrates our organization's expertise, experience, and track record in delivering similar projects.",
+    "category": "Team & Capabilities",
+    "response_mode": "comprehensive"
+  },
+  {
+    "title": "Resource Allocation",
+    "prompt_text": "Develop a resource allocation plan showing how we will staff this project, including roles, responsibilities, and time commitments for each team member.",
+    "category": "Team & Capabilities",
+    "response_mode": "comprehensive"
+  },
+  {
+    "title": "Gap Analysis",
+    "prompt_text": "Perform a gap analysis comparing the tender requirements against our current capabilities and documented experience. Identify any areas where we may need additional support or partnerships.",
+    "category": "Analysis",
+    "response_mode": "comprehensive"
+  },
+  {
+    "title": "Requirement Extraction",
+    "prompt_text": "Extract all mandatory and desirable requirements from the tender documents and organize them into a structured list with reference page numbers.",
+    "category": "Analysis",
+    "response_mode": "precise"
+  },
+  {
+    "title": "Document Summary",
+    "prompt_text": "Provide a concise summary of the key points, requirements, and deadlines from the tender documents.",
+    "category": "Analysis",
+    "response_mode": "precise"
+  },
+  {
+    "title": "Win Themes",
+    "prompt_text": "Analyze the tender requirements and our documentation to identify 3-5 compelling win themes that differentiate our proposal and resonate with the client's objectives.",
+    "category": "Strategy",
+    "response_mode": "strategy"
+  },
+  {
+    "title": "Competitive Analysis",
+    "prompt_text": "Based on the tender requirements, analyze potential competitors and identify our competitive advantages. Suggest how to position our bid to stand out.",
+    "category": "Strategy",
+    "response_mode": "strategy"
+  },
+  {
+    "title": "Differentiation Points",
+    "prompt_text": "Identify unique differentiators and innovative approaches we can offer that will make our tender response stand out from competitors.",
+    "category": "Strategy",
+    "response_mode": "strategy"
+  },
+  {
+    "title": "Security Compliance Check",
+    "prompt_text": "Review the tender documents for security requirements and verify our compliance with each security standard, certification, or protocol mentioned.",
+    "category": "Compliance",
+    "response_mode": "precise"
+  },
+  {
+    "title": "PSPF Requirements",
+    "prompt_text": "Identify and address all Protective Security Policy Framework (PSPF) requirements mentioned in the tender documents, demonstrating our understanding and compliance capabilities.",
+    "category": "Compliance",
+    "response_mode": "comprehensive"
+  },
+  {
+    "title": "Mandatory Requirements List",
+    "prompt_text": "Extract all mandatory requirements from the tender and create a checklist showing our compliance status for each item.",
+    "category": "Compliance",
+    "response_mode": "precise"
+  },
+  {
+    "title": "Quality Assurance Plan",
+    "prompt_text": "Develop a quality assurance plan that outlines how we will ensure deliverables meet or exceed the standards specified in the tender requirements.",
+    "category": "Tender Response",
+    "response_mode": "comprehensive"
+  }
+]

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Renderer Test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='lib/highlight-github.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/markdown.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/code-highlight.css') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .test-section {
+            margin-bottom: 30px;
+        }
+        .test-section h2 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        .input-display {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 15px;
+            font-family: monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .output-display {
+            border: 2px solid #667eea;
+            border-radius: 4px;
+            padding: 20px;
+            background: white;
+        }
+        .loader {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Markdown Renderer Test Suite</h1>
+        <div id="status" class="status">Loading...</div>
+
+        <div class="test-section">
+            <h2>Input Markdown</h2>
+            <div class="input-display" id="markdown-input"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>Rendered Output</h2>
+            <div class="output-display response-area" id="rendered-output"></div>
+        </div>
+    </div>
+
+    <!-- Load libraries in correct order -->
+    <script src="{{ url_for('static', filename='lib/marked.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/highlight.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/markdown-renderer.js') }}"></script>
+
+    <script>
+        // Test markdown content
+        const testMarkdown = `# Sample Response
+
+Here's a **bold** statement with *italic* text.
+
+## Code Example
+\`\`\`python
+def hello_world():
+    print("Hello, World!")
+\`\`\`
+
+## Inline Code
+You can use \`console.log()\` to debug JavaScript.
+
+## Table
+| Feature | Status |
+|---------|--------|
+| Upload  | ✅     |
+| Query   | ✅     |
+
+## List Example
+1. First item
+2. Second item
+   - Nested bullet
+   - Another bullet
+3. Third item
+
+## Blockquote
+> This is a quote from someone important.
+> It spans multiple lines.
+
+## Links
+Check out [Google](https://google.com) for more info.
+
+## Multiple Code Blocks
+\`\`\`javascript
+function greet(name) {
+    return \`Hello, \${name}!\`;
+}
+\`\`\`
+
+\`\`\`bash
+npm install marked highlight.js
+\`\`\`
+`;
+
+        // Display the input
+        document.getElementById('markdown-input').textContent = testMarkdown;
+
+        // Test the renderer
+        setTimeout(() => {
+            try {
+                // Check if libraries are loaded
+                if (typeof marked === 'undefined') {
+                    throw new Error('marked.js library not loaded');
+                }
+                if (typeof hljs === 'undefined') {
+                    throw new Error('highlight.js library not loaded');
+                }
+                if (typeof renderMarkdown !== 'function') {
+                    throw new Error('renderMarkdown function not found');
+                }
+
+                // Render the markdown
+                const rendered = renderMarkdown(testMarkdown);
+                document.getElementById('rendered-output').innerHTML = rendered;
+
+                // Verify key features
+                const tests = [
+                    { name: 'Headers (h1) rendered', check: () => rendered.includes('<h1>') },
+                    { name: 'Headers (h2) rendered', check: () => rendered.includes('<h2>') },
+                    { name: 'Bold text rendered', check: () => rendered.includes('<strong>') },
+                    { name: 'Italic text rendered', check: () => rendered.includes('<em>') },
+                    { name: 'Code blocks present', check: () => rendered.includes('<pre>') && rendered.includes('<code>') },
+                    { name: 'Code block wrapper', check: () => rendered.includes('code-block-wrapper') },
+                    { name: 'Copy button present', check: () => rendered.includes('copy-button') },
+                    { name: 'Language label', check: () => rendered.includes('code-language') },
+                    { name: 'Syntax highlighting', check: () => rendered.includes('class="hljs') },
+                    { name: 'Tables rendered', check: () => rendered.includes('<table>') },
+                    { name: 'Table wrapper', check: () => rendered.includes('table-wrapper') },
+                    { name: 'Lists rendered', check: () => rendered.includes('<ol>') || rendered.includes('<ul>') },
+                    { name: 'Blockquotes rendered', check: () => rendered.includes('<blockquote>') },
+                    { name: 'Links rendered', check: () => rendered.includes('<a href') },
+                    { name: 'External links open in new tab', check: () => rendered.includes('target="_blank"') },
+                    { name: 'Inline code', check: () => rendered.includes('class="inline-code"') }
+                ];
+
+                const failedTests = tests.filter(test => !test.check());
+                const passedTests = tests.filter(test => test.check());
+
+                let statusHtml = '';
+                if (failedTests.length === 0) {
+                    statusHtml = `<strong>✅ All ${tests.length} tests passed!</strong><br><br>`;
+                    statusHtml += 'Features verified:<br>';
+                    statusHtml += tests.map(t => `• ${t.name}`).join('<br>');
+                    document.getElementById('status').innerHTML = statusHtml;
+                    document.getElementById('status').className = 'status success';
+                } else {
+                    statusHtml = `<strong>⚠️ ${passedTests.length}/${tests.length} tests passed</strong><br><br>`;
+                    statusHtml += '<strong>Passed:</strong><br>' + passedTests.map(t => `• ${t.name}`).join('<br>');
+                    statusHtml += '<br><br><strong>Failed:</strong><br>' + failedTests.map(t => `• ${t.name}`).join('<br>');
+                    document.getElementById('status').innerHTML = statusHtml;
+                    document.getElementById('status').className = 'status error';
+                }
+
+            } catch (error) {
+                document.getElementById('status').innerHTML = '<strong>❌ Error:</strong> ' + error.message;
+                document.getElementById('status').className = 'status error';
+                console.error(error);
+            }
+        }, 100);
+    </script>
+</body>
+</html>

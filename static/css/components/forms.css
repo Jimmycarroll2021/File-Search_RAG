@@ -1,0 +1,190 @@
+/**
+ * Form Component Styles
+ * Styles for inputs, buttons, file uploads, and status messages
+ */
+
+/* Typography */
+h1 {
+  color: var(--accent-primary);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-lg);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xl);
+  font-size: var(--font-xs);
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-label);
+  font-weight: 500;
+}
+
+/* Input Fields */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: var(--font-sm);
+  transition: border-color var(--transition-normal);
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* File Upload Area */
+.file-upload-area {
+  border: 2px dashed var(--border-dashed);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal) ease;
+  background: var(--bg-primary);
+}
+
+.file-upload-area:hover {
+  border-color: var(--border-dashed-hover);
+  background: var(--bg-secondary);
+}
+
+.file-upload-area.dragover {
+  background: var(--bg-tertiary);
+  border-color: var(--border-dashed-hover);
+}
+
+#fileInput {
+  display: none;
+}
+
+.upload-icon {
+  font-size: 3em;
+  color: var(--accent-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.file-info {
+  margin-top: var(--spacing-sm);
+  color: var(--text-secondary);
+  font-size: var(--font-xs);
+}
+
+/* Buttons */
+button {
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  color: var(--text-on-gradient);
+  border: none;
+  padding: 12px var(--spacing-xl);
+  border-radius: var(--radius-md);
+  font-size: var(--font-sm);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  font-weight: 600;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--shadow-button);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Response Area */
+.response-area {
+  background: var(--bg-primary);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--border-accent);
+  margin-top: var(--spacing-md);
+  display: none;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.response-area.show {
+  display: block;
+  animation: slideIn var(--transition-normal) ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Status Messages */
+.status-message {
+  padding: 12px;
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-md);
+  display: none;
+  animation: slideIn var(--transition-normal) ease;
+}
+
+.status-message.success {
+  background: var(--status-success-bg);
+  color: var(--status-success-text);
+  border: 1px solid var(--status-success-border);
+}
+
+.status-message.error {
+  background: var(--status-error-bg);
+  color: var(--status-error-text);
+  border: 1px solid var(--status-error-border);
+}
+
+.status-message.show {
+  display: block;
+}
+
+/* Loader */
+.loader {
+  border: 3px solid var(--shadow-loader);
+  border-top: 3px solid var(--accent-primary);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: var(--spacing-sm);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

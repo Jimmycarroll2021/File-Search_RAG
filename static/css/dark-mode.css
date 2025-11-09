@@ -1,0 +1,93 @@
+/**
+ * Dark Mode Specific Overrides
+ * Additional styling adjustments for dark theme beyond variable changes
+ */
+
+[data-theme="dark"] {
+  /* Smooth background transition */
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+}
+
+[data-theme="dark"] .container {
+  /* Slightly stronger shadow in dark mode for depth */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .file-upload-area {
+  /* Subtle background for better visibility */
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] .file-upload-area:hover {
+  background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .response-area {
+  /* Better contrast for response text */
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] textarea {
+  /* Dark input fields */
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] input[type="text"]::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+  position: relative;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.theme-icon {
+  position: absolute;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Light mode: show moon, hide sun */
+[data-theme="light"] .theme-icon.sun {
+  opacity: 0;
+  transform: rotate(180deg) scale(0);
+}
+
+[data-theme="light"] .theme-icon.moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Dark mode: show sun, hide moon */
+[data-theme="dark"] .theme-icon.moon {
+  opacity: 0;
+  transform: rotate(-180deg) scale(0);
+}
+
+[data-theme="dark"] .theme-icon.sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}

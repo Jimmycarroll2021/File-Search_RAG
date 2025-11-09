@@ -1,0 +1,187 @@
+/**
+ * Category Filter Component Styles
+ *
+ * Styling for category chips with custom colors,
+ * selected/unselected states, and hover effects.
+ */
+
+/* Category-specific colors */
+.category-chip[data-category="compliance"] {
+    --chip-color: #ff6b6b;
+    --chip-bg-selected: rgba(255, 107, 107, 0.15);
+    --chip-border-selected: #ff6b6b;
+    color: #ff6b6b;
+    border-color: rgba(255, 107, 107, 0.3);
+}
+
+.category-chip[data-category="contracts"] {
+    --chip-color: #4ecdc4;
+    --chip-bg-selected: rgba(78, 205, 196, 0.15);
+    --chip-border-selected: #4ecdc4;
+    color: #4ecdc4;
+    border-color: rgba(78, 205, 196, 0.3);
+}
+
+.category-chip[data-category="proposals"] {
+    --chip-color: #45b7d1;
+    --chip-bg-selected: rgba(69, 183, 209, 0.15);
+    --chip-border-selected: #45b7d1;
+    color: #45b7d1;
+    border-color: rgba(69, 183, 209, 0.3);
+}
+
+.category-chip[data-category="pricing"] {
+    --chip-color: #96ceb4;
+    --chip-bg-selected: rgba(150, 206, 180, 0.15);
+    --chip-border-selected: #96ceb4;
+    color: #96ceb4;
+    border-color: rgba(150, 206, 180, 0.3);
+}
+
+.category-chip[data-category="requirements"] {
+    --chip-color: #ffeaa7;
+    --chip-bg-selected: rgba(255, 234, 167, 0.25);
+    --chip-border-selected: #ffeaa7;
+    color: #d4a850;
+    border-color: rgba(255, 234, 167, 0.4);
+}
+
+.category-chip[data-category="technical"] {
+    --chip-color: #a29bfe;
+    --chip-bg-selected: rgba(162, 155, 254, 0.15);
+    --chip-border-selected: #a29bfe;
+    color: #a29bfe;
+    border-color: rgba(162, 155, 254, 0.3);
+}
+
+.category-chip[data-category="cvs_resumes"] {
+    --chip-color: #fd79a8;
+    --chip-bg-selected: rgba(253, 121, 168, 0.15);
+    --chip-border-selected: #fd79a8;
+    color: #fd79a8;
+    border-color: rgba(253, 121, 168, 0.3);
+}
+
+.category-chip[data-category="policies"] {
+    --chip-color: #74b9ff;
+    --chip-bg-selected: rgba(116, 185, 255, 0.15);
+    --chip-border-selected: #74b9ff;
+    color: #74b9ff;
+    border-color: rgba(116, 185, 255, 0.3);
+}
+
+.category-chip[data-category="other"] {
+    --chip-color: #b2bec3;
+    --chip-bg-selected: rgba(178, 190, 195, 0.15);
+    --chip-border-selected: #b2bec3;
+    color: #b2bec3;
+    border-color: rgba(178, 190, 195, 0.3);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .category-chip {
+    background: var(--surface-elevated, #2d2d2d);
+}
+
+[data-theme="dark"] .category-chip.selected {
+    background: var(--chip-bg-selected);
+    border-color: var(--chip-border-selected);
+}
+
+[data-theme="dark"] .category-chip[data-category="requirements"] {
+    color: #ffeaa7;
+}
+
+/* Hover states */
+.category-chip:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .category-chip:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Count badges */
+.category-chip .category-count {
+    background: var(--chip-color);
+    color: white;
+    opacity: 0.9;
+}
+
+.category-chip.selected .category-count {
+    background: var(--chip-color);
+    color: white;
+    opacity: 1;
+    font-weight: 700;
+}
+
+/* Scrollbar styling for category list */
+.category-chips::-webkit-scrollbar {
+    width: 6px;
+}
+
+.category-chips::-webkit-scrollbar-track {
+    background: var(--surface-color);
+    border-radius: 3px;
+}
+
+.category-chips::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.category-chips::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* Animation for chip selection */
+@keyframes chip-select {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.category-chip.selecting {
+    animation: chip-select 0.2s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .category-filter-container {
+        padding: 0.75rem;
+    }
+
+    .category-chip {
+        padding: 0.4rem 0.6rem;
+    }
+
+    .category-icon {
+        font-size: 1.1rem;
+    }
+
+    .category-name {
+        font-size: 0.85rem;
+    }
+
+    .category-description {
+        font-size: 0.7rem;
+    }
+
+    .category-count {
+        font-size: 0.7rem;
+        padding: 0.1rem 0.4rem;
+    }
+}
+
+/* Print styles - hide filters when printing */
+@media print {
+    .category-filter-container {
+        display: none;
+    }
+}

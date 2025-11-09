@@ -1,0 +1,347 @@
+/**
+ * Code Block Highlighting Styles
+ * Styles for code blocks with syntax highlighting and copy button
+ */
+
+/* Code block wrapper */
+.markdown-content .code-block-wrapper,
+.response-area .code-block-wrapper {
+    position: relative;
+    margin: 16px 0;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f6f8fa;
+    border: 1px solid #e0e0e0;
+}
+
+/* Code block header */
+.markdown-content .code-block-header,
+.response-area .code-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: #f0f2f5;
+    border-bottom: 1px solid #e0e0e0;
+    min-height: 40px;
+}
+
+/* Language label */
+.markdown-content .code-language,
+.response-area .code-language {
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #666;
+    letter-spacing: 0.5px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+/* Copy button */
+.markdown-content .copy-button,
+.response-area .copy-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: white;
+    border: 1px solid #d0d7de;
+    border-radius: 4px;
+    color: #57606a;
+    font-size: 0.85em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.markdown-content .copy-button:hover,
+.response-area .copy-button:hover {
+    background: #f6f8fa;
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.markdown-content .copy-button:active,
+.response-area .copy-button:active {
+    background: #eef0f2;
+    transform: scale(0.98);
+}
+
+.markdown-content .copy-button.copied,
+.response-area .copy-button.copied {
+    background: #d4edda;
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.markdown-content .copy-button.copy-failed,
+.response-area .copy-button.copy-failed {
+    background: #f8d7da;
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.markdown-content .copy-button svg,
+.response-area .copy-button svg {
+    flex-shrink: 0;
+}
+
+/* Pre and code elements */
+.markdown-content pre,
+.response-area pre {
+    margin: 0;
+    padding: 16px;
+    overflow-x: auto;
+    background: #f6f8fa;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.markdown-content pre code,
+.response-area pre code {
+    background: transparent;
+    padding: 0;
+    border: 0;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+/* Scrollbar styling for code blocks */
+.markdown-content pre::-webkit-scrollbar,
+.response-area pre::-webkit-scrollbar {
+    height: 8px;
+}
+
+.markdown-content pre::-webkit-scrollbar-track,
+.response-area pre::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 4px;
+}
+
+.markdown-content pre::-webkit-scrollbar-thumb,
+.response-area pre::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 4px;
+}
+
+.markdown-content pre::-webkit-scrollbar-thumb:hover,
+.response-area pre::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+/* Highlight.js overrides for better styling */
+.markdown-content .hljs,
+.response-area .hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0;
+    background: transparent;
+}
+
+/* Syntax highlighting colors (GitHub theme enhancement) */
+.hljs-comment,
+.hljs-quote {
+    color: #6a737d;
+    font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+    color: #d73a49;
+    font-weight: 500;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+    color: #005cc5;
+}
+
+.hljs-string,
+.hljs-doctag {
+    color: #032f62;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+    color: #6f42c1;
+    font-weight: 600;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+    color: #22863a;
+    font-weight: 500;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+    color: #22863a;
+    font-weight: 400;
+}
+
+.hljs-regexp,
+.hljs-link {
+    color: #032f62;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+    color: #e36209;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+    color: #005cc5;
+}
+
+.hljs-meta {
+    color: #6a737d;
+}
+
+.hljs-deletion {
+    background: #ffeef0;
+    color: #b31d28;
+}
+
+.hljs-addition {
+    background: #f0fff4;
+    color: #22863a;
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: 600;
+}
+
+/* Line numbers (optional feature) */
+.markdown-content pre.line-numbers,
+.response-area pre.line-numbers {
+    counter-reset: line;
+}
+
+.markdown-content pre.line-numbers code,
+.response-area pre.line-numbers code {
+    counter-increment: line;
+}
+
+.markdown-content pre.line-numbers code::before,
+.response-area pre.line-numbers code::before {
+    content: counter(line);
+    display: inline-block;
+    width: 30px;
+    padding-right: 12px;
+    margin-right: 12px;
+    color: #999;
+    text-align: right;
+    border-right: 1px solid #d0d7de;
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+    .markdown-content .code-block-wrapper,
+    .response-area .code-block-wrapper {
+        background: #0d1117;
+        border-color: #30363d;
+    }
+
+    .markdown-content .code-block-header,
+    .response-area .code-block-header {
+        background: #161b22;
+        border-bottom-color: #30363d;
+    }
+
+    .markdown-content .code-language,
+    .response-area .code-language {
+        color: #8b949e;
+    }
+
+    .markdown-content .copy-button,
+    .response-area .copy-button {
+        background: #21262d;
+        border-color: #30363d;
+        color: #c9d1d9;
+    }
+
+    .markdown-content .copy-button:hover,
+    .response-area .copy-button:hover {
+        background: #30363d;
+        border-color: #667eea;
+    }
+
+    .markdown-content pre,
+    .response-area pre {
+        background: #0d1117;
+    }
+
+    .markdown-content pre::-webkit-scrollbar-track,
+    .response-area pre::-webkit-scrollbar-track {
+        background: #21262d;
+    }
+
+    .markdown-content pre::-webkit-scrollbar-thumb,
+    .response-area pre::-webkit-scrollbar-thumb {
+        background: #484f58;
+    }
+
+    .markdown-content pre::-webkit-scrollbar-thumb:hover,
+    .response-area pre::-webkit-scrollbar-thumb:hover {
+        background: #6e7681;
+    }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .markdown-content .code-block-header,
+    .response-area .code-block-header {
+        padding: 6px 10px;
+    }
+
+    .markdown-content .copy-button,
+    .response-area .copy-button {
+        padding: 4px 8px;
+        font-size: 0.8em;
+        gap: 4px;
+    }
+
+    .markdown-content .copy-button svg,
+    .response-area .copy-button svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .markdown-content pre,
+    .response-area pre {
+        padding: 12px;
+        font-size: 0.85em;
+    }
+}
+
+/* Print styles */
+@media print {
+    .markdown-content .copy-button,
+    .response-area .copy-button {
+        display: none;
+    }
+
+    .markdown-content .code-block-wrapper,
+    .response-area .code-block-wrapper {
+        border: 1px solid #ccc;
+    }
+
+    .markdown-content pre,
+    .response-area pre {
+        background: #f9f9f9;
+    }
+}

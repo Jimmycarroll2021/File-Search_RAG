@@ -1,0 +1,168 @@
+<!-- Bulk Upload Modal -->
+<div id="bulkUploadModal" class="modal">
+    <div class="modal-content bulk-upload-modal">
+        <div class="modal-header">
+            <h2>Bulk Upload Documents</h2>
+            <span class="modal-close" onclick="closeBulkUploadModal()">&times;</span>
+        </div>
+
+        <div class="modal-body">
+            <!-- Configuration Section -->
+            <div class="bulk-upload-section">
+                <h3>Configuration</h3>
+
+                <div class="input-group">
+                    <label for="bulkSourceDirectory">Source Directory</label>
+                    <input
+                        type="text"
+                        id="bulkSourceDirectory"
+                        placeholder="Enter directory path..."
+                        value="C:\users\j_car\Downloads\Sales Pipeline Rag\documents\cleaned_organized_docs\"
+                    >
+                    <small class="input-hint">Path to directory containing documents to upload</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="bulkStoreName">Target Store</label>
+                    <select id="bulkStoreName">
+                        <option value="">Select a store...</option>
+                        <option value="my-file-search-store">my-file-search-store</option>
+                    </select>
+                </div>
+
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="autoCategorize" checked>
+                        Auto-detect categories from folder structure
+                    </label>
+                </div>
+
+                <div class="input-group">
+                    <label for="batchSize">Batch Size</label>
+                    <input
+                        type="number"
+                        id="batchSize"
+                        value="10"
+                        min="1"
+                        max="50"
+                    >
+                    <small class="input-hint">Number of files to upload per batch (1-50)</small>
+                </div>
+
+                <div class="button-group">
+                    <button id="scanDirectoryBtn" class="btn btn-secondary" onclick="scanDirectory()">
+                        Scan Directory
+                    </button>
+                    <button id="startUploadBtn" class="btn btn-primary" onclick="startBulkUpload()" disabled>
+                        Start Upload
+                    </button>
+                </div>
+            </div>
+
+            <!-- Scan Results Section -->
+            <div id="scanResultsSection" class="bulk-upload-section" style="display: none;">
+                <h3>Scan Results</h3>
+
+                <div class="scan-summary">
+                    <div class="summary-item">
+                        <span class="summary-label">Total Files:</span>
+                        <span id="scanTotalFiles" class="summary-value">0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Categories Found:</span>
+                        <span id="scanTotalCategories" class="summary-value">0</span>
+                    </div>
+                </div>
+
+                <div id="categoryDistribution" class="category-distribution">
+                    <!-- Category distribution will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Upload Progress Section -->
+            <div id="uploadProgressSection" class="bulk-upload-section" style="display: none;">
+                <h3>Upload Progress</h3>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div id="uploadProgressBar" class="progress-bar-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span id="uploadProgressText">0 / 0 files uploaded (0%)</span>
+                    </div>
+                </div>
+
+                <div class="upload-stats">
+                    <div class="stat-item stat-success">
+                        <span class="stat-icon">✓</span>
+                        <span class="stat-label">Success:</span>
+                        <span id="uploadSuccessCount" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item stat-failed">
+                        <span class="stat-icon">✗</span>
+                        <span class="stat-label">Failed:</span>
+                        <span id="uploadFailedCount" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item stat-skipped">
+                        <span class="stat-icon">⊘</span>
+                        <span class="stat-label">Skipped:</span>
+                        <span id="uploadSkippedCount" class="stat-value">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Table Section -->
+            <div id="resultsTableSection" class="bulk-upload-section" style="display: none;">
+                <h3>Upload Results</h3>
+
+                <div class="results-controls">
+                    <div class="filter-group">
+                        <label>Filter by status:</label>
+                        <select id="statusFilter" onchange="filterResults()">
+                            <option value="all">All</option>
+                            <option value="success">Success</option>
+                            <option value="failed">Failed</option>
+                            <option value="skipped">Skipped</option>
+                        </select>
+                    </div>
+                    <div class="search-group">
+                        <input
+                            type="text"
+                            id="filenameSearch"
+                            placeholder="Search filename..."
+                            onkeyup="filterResults()"
+                        >
+                    </div>
+                </div>
+
+                <div class="results-table-container">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Filename</th>
+                                <th>Category</th>
+                                <th>Size</th>
+                                <th>Status</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsTableBody">
+                            <!-- Results will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="results-summary">
+                    <p id="resultsSummaryText"></p>
+                </div>
+            </div>
+
+            <!-- Status Message -->
+            <div id="bulkUploadStatus" class="status-message"></div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeBulkUploadModal()">Close</button>
+        </div>
+    </div>
+</div>

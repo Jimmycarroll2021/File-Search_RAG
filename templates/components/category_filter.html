@@ -1,0 +1,199 @@
+<!-- Category Filter Component -->
+<div class="category-filter-container">
+    <div class="filter-header">
+        <h3>Filter by Category</h3>
+        <button id="clear-categories-btn" class="btn-clear" title="Clear all selections">
+            Clear All
+        </button>
+    </div>
+
+    <div class="filter-actions">
+        <button id="select-all-categories-btn" class="btn-select-all">
+            Select All
+        </button>
+    </div>
+
+    <div id="category-chips-container" class="category-chips">
+        <!-- Category chips will be dynamically loaded here -->
+        <div class="loading-message">Loading categories...</div>
+    </div>
+
+    <div class="filter-summary">
+        <span id="selected-count">0</span> categories selected
+        <span class="separator">|</span>
+        <span id="document-count">0</span> documents
+    </div>
+</div>
+
+<style>
+    .category-filter-container {
+        background: var(--surface-color);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .filter-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .filter-header h3 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .btn-clear {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        padding: 0.25rem 0.5rem;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+
+    .btn-clear:hover {
+        color: var(--danger-color, #ef4444);
+    }
+
+    .filter-actions {
+        margin-bottom: 0.75rem;
+    }
+
+    .btn-select-all {
+        width: 100%;
+        padding: 0.5rem;
+        background: var(--primary-color, #3b82f6);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .btn-select-all:hover {
+        background: var(--primary-hover, #2563eb);
+    }
+
+    .category-chips {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .category-chip {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 0.75rem;
+        border: 2px solid;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+        background: var(--surface-color);
+    }
+
+    .category-chip:hover {
+        transform: translateX(4px);
+    }
+
+    .category-chip.selected {
+        background: var(--chip-bg-selected);
+        border-color: var(--chip-border-selected);
+    }
+
+    .category-chip .checkbox {
+        width: 18px;
+        height: 18px;
+        border: 2px solid currentColor;
+        border-radius: 3px;
+        margin-right: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+    }
+
+    .category-chip.selected .checkbox {
+        background: currentColor;
+    }
+
+    .category-chip.selected .checkbox::after {
+        content: '✓';
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .category-info {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .category-icon {
+        font-size: 1.25rem;
+    }
+
+    .category-details {
+        flex: 1;
+    }
+
+    .category-name {
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: capitalize;
+        margin-bottom: 0.15rem;
+    }
+
+    .category-description {
+        font-size: 0.75rem;
+        opacity: 0.7;
+    }
+
+    .category-count {
+        background: var(--badge-bg, rgba(0,0,0,0.1));
+        color: var(--badge-color, var(--text-primary));
+        padding: 0.15rem 0.5rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .filter-summary {
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--border-color);
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        text-align: center;
+    }
+
+    .filter-summary .separator {
+        margin: 0 0.5rem;
+        opacity: 0.5;
+    }
+
+    .filter-summary span {
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    .loading-message {
+        text-align: center;
+        padding: 1rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+    }
+</style>

@@ -1,0 +1,226 @@
+/**
+ * Response Modes Component Styles
+ * Styling for the mode selector interface
+ */
+
+.response-modes-container {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--background-secondary, #f8f9fa);
+    border-radius: 12px;
+    border: 1px solid var(--border-color, #e0e0e0);
+}
+
+.mode-description {
+    color: var(--text-secondary, #666);
+    font-size: 0.95em;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Modes Grid Layout */
+.modes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 1024px) {
+    .modes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 640px) {
+    .modes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mode Card */
+.mode-card {
+    background: var(--background-primary, #ffffff);
+    border: 2px solid var(--border-color, #e0e0e0);
+    border-radius: 10px;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.mode-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #4285f4, #34a853);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+/* Hover State */
+.mode-card:hover {
+    border-color: var(--accent-color, #4285f4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.15);
+}
+
+.mode-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Active State */
+.mode-card.active {
+    border-color: var(--accent-color, #4285f4);
+    background: linear-gradient(135deg, rgba(66, 133, 244, 0.05) 0%, rgba(52, 168, 83, 0.05) 100%);
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.2);
+}
+
+.mode-card.active::before {
+    transform: scaleX(1);
+}
+
+/* Mode Icon */
+.mode-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.mode-card:hover .mode-icon,
+.mode-card.active .mode-icon {
+    transform: scale(1.1);
+}
+
+/* Mode Name */
+.mode-name {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--text-primary, #333);
+    margin-bottom: 0.5rem;
+}
+
+.mode-card.active .mode-name {
+    color: var(--accent-color, #4285f4);
+}
+
+/* Mode Description */
+.mode-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #666);
+    line-height: 1.4;
+}
+
+/* Active Mode Indicator */
+.active-mode-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    background: var(--background-primary, #ffffff);
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #e0e0e0);
+    font-size: 0.95rem;
+}
+
+.indicator-label {
+    color: var(--text-secondary, #666);
+    margin-right: 0.75rem;
+    font-weight: 500;
+}
+
+.indicator-value {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--accent-color, #4285f4);
+}
+
+.indicator-icon {
+    font-size: 1.25rem;
+}
+
+.indicator-name {
+    font-size: 1rem;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .response-modes-container {
+        background: var(--background-secondary-dark, #1e1e1e);
+        border-color: var(--border-color-dark, #404040);
+    }
+
+    .mode-card {
+        background: var(--background-primary-dark, #2d2d2d);
+        border-color: var(--border-color-dark, #404040);
+    }
+
+    .mode-card:hover {
+        border-color: var(--accent-color-dark, #5a9cf8);
+        box-shadow: 0 4px 12px rgba(90, 156, 248, 0.2);
+    }
+
+    .mode-card.active {
+        background: linear-gradient(135deg, rgba(90, 156, 248, 0.1) 0%, rgba(82, 193, 119, 0.1) 100%);
+        border-color: var(--accent-color-dark, #5a9cf8);
+        box-shadow: 0 4px 12px rgba(90, 156, 248, 0.25);
+    }
+
+    .mode-name {
+        color: var(--text-primary-dark, #e0e0e0);
+    }
+
+    .mode-card.active .mode-name {
+        color: var(--accent-color-dark, #5a9cf8);
+    }
+
+    .mode-desc {
+        color: var(--text-secondary-dark, #a0a0a0);
+    }
+
+    .active-mode-indicator {
+        background: var(--background-primary-dark, #2d2d2d);
+        border-color: var(--border-color-dark, #404040);
+    }
+
+    .indicator-label {
+        color: var(--text-secondary-dark, #a0a0a0);
+    }
+
+    .indicator-value {
+        color: var(--accent-color-dark, #5a9cf8);
+    }
+}
+
+/* Focus States for Accessibility */
+.mode-card:focus {
+    outline: 2px solid var(--accent-color, #4285f4);
+    outline-offset: 2px;
+}
+
+/* Animation for Mode Selection */
+@keyframes modeSelect {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.98);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.mode-card.selecting {
+    animation: modeSelect 0.3s ease;
+}
