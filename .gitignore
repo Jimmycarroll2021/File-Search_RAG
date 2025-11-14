@@ -104,12 +104,16 @@ dmypy.json
 # Project specific
 app_old.py
 nul
-test_*.html
-test_*.py
+test_dark_mode.html
+test_templates.py
+test-markdown-render.js
 *_IMPLEMENTATION.md
 *_COMPLETION_REPORT.md
 *_VERIFICATION.md
 TASK_*.md
+DARK_MODE_*.md
+MARKDOWN_*.md
+TEMPLATE_*.md
 
 # Temporary files
 *.tmp

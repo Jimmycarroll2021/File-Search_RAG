@@ -73,8 +73,15 @@ def upload_file():
 
         # Get or create store
         if store_name not in file_search_stores:
-            file_search_store = gemini_service.create_file_search_store(store_name)
-            file_search_stores[store_name] = file_search_store.name
+            # Check if store exists in database first
+            db_store_check = Store.query.filter_by(name=store_name).first()
+            if db_store_check:
+                # Load existing store from database into memory cache
+                file_search_stores[store_name] = db_store_check.gemini_store_id
+            else:
+                # Create new store in Gemini
+                file_search_store = gemini_service.create_file_search_store(store_name)
+                file_search_stores[store_name] = file_search_store.name
 
         store_id = file_search_stores[store_name]
 

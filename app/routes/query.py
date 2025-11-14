@@ -37,13 +37,20 @@ def query():
         if not question:
             return jsonify({'success': False, 'error': 'No question provided'}), 400
 
+        # First check in-memory cache
         if store_name not in file_search_stores:
-            return jsonify({
-                'success': False,
-                'error': f'Store "{store_name}" not found. Please upload files first.'
-            }), 404
-
-        store_id = file_search_stores[store_name]
+            # If not in cache, check database
+            db_store = Store.query.filter_by(name=store_name).first()
+            if not db_store:
+                return jsonify({
+                    'success': False,
+                    'error': f'Store "{store_name}" not found. Please upload files first.'
+                }), 404
+            # Load from database into memory cache
+            file_search_stores[store_name] = db_store.gemini_store_id
+            store_id = db_store.gemini_store_id
+        else:
+            store_id = file_search_stores[store_name]
 
         # Get mode configuration
         mode_config = get_mode_config(mode)
