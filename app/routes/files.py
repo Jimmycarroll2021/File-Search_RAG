@@ -1,7 +1,8 @@
 """
 Files blueprint - handles file upload and store management
 """
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
+import traceback
 from app.services.gemini_service import GeminiService
 from app.services.category_service import detect_category_from_path
 from app.services.bulk_upload_service import (
@@ -86,12 +87,16 @@ def create_store():
 def upload_file():
     """Upload a file to a file search store with category detection"""
     try:
+        current_app.logger.debug(f"Upload request received. Files: {request.files.keys()}, Form: {request.form}")
+
         if 'file' not in request.files:
             return jsonify({'success': False, 'error': 'No file provided'}), 400
 
         file = request.files['file']
         store_name = request.form.get('store_name', 'my-file-search-store')
         category_override = request.form.get('category')  # Optional manual category
+
+        current_app.logger.info(f"Processing file upload: '{file.filename}' to store '{store_name}'")
 
         if file.filename == '':
             return jsonify({'success': False, 'error': 'No file selected'}), 400
@@ -122,11 +127,13 @@ def upload_file():
         store_id = file_search_stores[store_name]
 
         # Upload to file search store
+        current_app.logger.info(f"Uploading to Gemini store: {store_id}")
         operation = gemini_service.upload_file_to_store(
             file_path=temp_path,
             store_id=store_id,
             display_name=file.filename
         )
+        current_app.logger.info(f"Gemini upload successful: {operation.name if hasattr(operation, 'name') else 'Unknown'}")
 
         # Get database store record
         db_store = Store.query.filter_by(gemini_store_id=store_id).first()
@@ -164,9 +171,28 @@ def upload_file():
             'document_id': document.id
         })
     except Exception as e:
+        # Log full error details with stack trace
+        error_msg = f"Upload endpoint error: {type(e).__name__}: {str(e)}"
+        current_app.logger.error(error_msg, exc_info=True)
+
+        # Log additional context
+        current_app.logger.error(f"Failed upload details - Store: {store_name if 'store_name' in locals() else 'Unknown'}, File: {file.filename if 'file' in locals() and hasattr(file, 'filename') else 'Unknown'}")
+
+        # Print to console for immediate visibility
+        print(f"\n{'='*60}")
+        print(f"UPLOAD ERROR OCCURRED:")
+        print(f"Error Type: {type(e).__name__}")
+        print(f"Error Message: {str(e)}")
+        print(f"Store: {store_name if 'store_name' in locals() else 'Unknown'}")
+        print(f"File: {file.filename if 'file' in locals() and hasattr(file, 'filename') else 'Unknown'}")
+        print(f"Stack Trace:")
+        print(traceback.format_exc())
+        print(f"{'='*60}\n")
+
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': str(e),
+            'error_type': type(e).__name__
         }), 500
 
 

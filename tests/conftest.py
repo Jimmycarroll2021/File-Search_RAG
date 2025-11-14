@@ -28,6 +28,12 @@ def app():
 
 
 @pytest.fixture(scope='function')
+def client(app):
+    """Create a test client for the app."""
+    return app.test_client()
+
+
+@pytest.fixture(scope='function')
 def db_session(app):
     """Provide a database session for tests."""
     from app.database import db

@@ -1,0 +1,179 @@
+
+[1m[95m
+============================================================
+GOOGLE GEMINI FILE SEARCH - END-TO-END VALIDATION SUITE
+============================================================
+[0m
+
+[96m[INFO] Base URL: http://127.0.0.1:5000[0m
+[96m[INFO] API Base: http://127.0.0.1:5000/api[0m
+[96m[INFO] Timeout: 30s[0m
+
+[95m[1m============================================================
+TEST 1: Verify Application Running
+============================================================[0m
+
+[92m[PASS] Application is running and responding[0m
+
+[95m[1m============================================================
+TEST 2: Create Test File
+============================================================[0m
+
+[92m[PASS] Test file created: test_sample.txt[0m
+[96m[INFO] File size: 1425 bytes[0m
+
+[95m[1m============================================================
+TEST 3: Create File Search Store
+============================================================[0m
+
+[96m[INFO] Store name: test-store-1763112448[0m
+[96m[INFO] Response status: 200[0m
+[92m[PASS] Store created successfully: fileSearchStores/teststore1763112448-iw5717ww0zfh[0m
+
+[95m[1m============================================================
+TEST 4: Upload File to Store
+============================================================[0m
+
+[96m[INFO] Response status: 200[0m
+[92m[PASS] File uploaded successfully[0m
+[96m[INFO] File ID: N/A[0m
+
+[95m[1m============================================================
+TEST 5: Wait for File Indexing
+============================================================[0m
+
+[96m[INFO] Waiting 10 seconds for Gemini to index the file...[0m
+[96m[INFO] Waiting... 10s remaining[0m
+[96m[INFO] Waiting... 9s remaining[0m
+[96m[INFO] Waiting... 8s remaining[0m
+[96m[INFO] Waiting... 7s remaining[0m
+[96m[INFO] Waiting... 6s remaining[0m
+[96m[INFO] Waiting... 5s remaining[0m
+[96m[INFO] Waiting... 4s remaining[0m
+[96m[INFO] Waiting... 3s remaining[0m
+[96m[INFO] Waiting... 2s remaining[0m
+[96m[INFO] Waiting... 1s remaining[0m
+[92m[PASS] File indexing wait completed[0m
+
+[95m[1m============================================================
+TEST 6: List Stores
+============================================================[0m
+
+[96m[INFO] Response status: 200[0m
+[92m[PASS] Retrieved 3 store(s)[0m
+[96m[INFO]   - Store: test-store (ID: stores/test-store-123)[0m
+[96m[INFO]   - Store: my-file-search-store (ID: fileSearchStores/myfilesearchstore-fsrraujiptlj)[0m
+[96m[INFO]   - Store: test-store-1763112448 (ID: fileSearchStores/teststore1763112448-iw5717ww0zfh)[0m
+
+[95m[1m============================================================
+TEST 7: Query the File Search Store
+============================================================[0m
+
+[96m[INFO] Query: What is this document about?[0m
+[96m[INFO] Store: test-store-1763112448[0m
+[96m[INFO] Mode: quick[0m
+[96m[INFO] Response status: 200[0m
+[92m[PASS] Query executed successfully[0m
+[91m[FAIL] Query failed: object of type 'NoneType' has no len()[0m
+
+[95m[1m============================================================
+TEST 10: Test Multiple Queries
+============================================================[0m
+
+[96m[INFO] 
+Query 1/3: What sections does this document contain?[0m
+[92m[PASS] Query 1 successful[0m
+[96m[INFO] 
+Query 2/3: What features are being tested?[0m
+[92m[PASS] Query 2 successful[0m
+[96m[INFO] 
+Query 3/3: What is the purpose of this document?[0m
+[92m[PASS] Query 3 successful[0m
+[92m[PASS] All 3 queries passed[0m
+
+[95m[1m============================================================
+TEST 12: List Files in Store
+============================================================[0m
+
+[96m[INFO] Response status: 404[0m
+[93m[WARN] List files returned status 404[0m
+
+[95m[1m============================================================
+TEST 8: Verify Database Persistence
+============================================================[0m
+
+[92m[PASS] Database file exists: C:/ai tools/Google_File Search/instance/app.db[0m
+[96m[INFO] Database size: 110592 bytes[0m
+[96m[INFO] Last modified: 2025-11-14 20:27:39[0m
+
+[95m[1m============================================================
+TEST 9: Query Database Directly
+============================================================[0m
+
+2025-11-14 20:28:12,239 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-11-14 20:28:12,239 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("stores")
+2025-11-14 20:28:12,240 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-11-14 20:28:12,241 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("documents")
+2025-11-14 20:28:12,241 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-11-14 20:28:12,241 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("smart_prompts")
+2025-11-14 20:28:12,242 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-11-14 20:28:12,242 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("query_history")
+2025-11-14 20:28:12,242 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-11-14 20:28:12,243 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user_settings")
+2025-11-14 20:28:12,243 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-11-14 20:28:12,243 INFO sqlalchemy.engine.Engine COMMIT
+[2025-11-14 20:28:12,243] INFO in __init__: Database tables initialized
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2025-11-14 20:28:21,040 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-11-14 20:28:21,044 INFO sqlalchemy.engine.Engine SELECT stores.id AS stores_id, stores.name AS stores_name, stores.gemini_store_id AS stores_gemini_store_id, stores.display_name AS stores_display_name, stores.created_at AS stores_created_at 
+FROM stores
+2025-11-14 20:28:21,044 INFO sqlalchemy.engine.Engine [generated in 0.00036s] ()
+[2025-11-14 20:28:21,045] INFO in files: Loaded 3 stores from database
+2025-11-14 20:28:21,046 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-11-14 20:28:21,051 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-11-14 20:28:21,052 INFO sqlalchemy.engine.Engine SELECT stores.id AS stores_id, stores.name AS stores_name, stores.gemini_store_id AS stores_gemini_store_id, stores.display_name AS stores_display_name, stores.created_at AS stores_created_at 
+FROM stores
+2025-11-14 20:28:21,052 INFO sqlalchemy.engine.Engine [cached since 0.007847s ago] ()
+2025-11-14 20:28:21,056 INFO sqlalchemy.engine.Engine SELECT documents.id AS documents_id, documents.store_id AS documents_store_id, documents.filename AS documents_filename, documents.category AS documents_category, documents.file_path AS documents_file_path, documents.gemini_file_id AS documents_gemini_file_id, documents.file_size AS documents_file_size, documents.upload_date AS documents_upload_date, documents.file_metadata AS documents_file_metadata 
+FROM documents
+2025-11-14 20:28:21,056 INFO sqlalchemy.engine.Engine [generated in 0.00028s] ()
+2025-11-14 20:28:21,062 INFO sqlalchemy.engine.Engine SELECT query_history.id AS query_history_id, query_history.question AS query_history_question, query_history.response AS query_history_response, query_history.response_mode AS query_history_response_mode, query_history.category_filter AS query_history_category_filter, query_history.store_id AS query_history_store_id, query_history.query_date AS query_history_query_date, query_history.response_time AS query_history_response_time 
+FROM query_history
+2025-11-14 20:28:21,062 INFO sqlalchemy.engine.Engine [generated in 0.00032s] ()
+[92m[PASS] Database connection successful[0m
+[96m[INFO] Stores in database: 3[0m
+[96m[INFO] Documents in database: 129[0m
+[96m[INFO] Queries in database: 0[0m
+[96m[INFO]   - Store: test-store (ID: stores/test-store-123)[0m
+[96m[INFO]   - Store: my-file-search-store (ID: fileSearchStores/myfilesearchstore-fsrraujiptlj)[0m
+[96m[INFO]   - Store: test-store-1763112448 (ID: fileSearchStores/teststore1763112448-iw5717ww0zfh)[0m
+[96m[INFO]   - Document: JimmyCarrollPaySlip20250930.pdf[0m
+[96m[INFO]   - Document: CLEANING_REPORT.txt[0m
+[96m[INFO]   - Document: ACIC - Security Risk Assessment Services.docx[0m
+[96m[INFO]   - Document: APP0049173 - Risk management, benchmarking and audit services.pdf[0m
+[96m[INFO]   - Document: APRA - Procurement Security Policy.docx[0m
+2025-11-14 20:28:21,063 INFO sqlalchemy.engine.Engine ROLLBACK
+
+[95m[1m============================================================
+TEST 11: UI Endpoints Accessibility
+============================================================[0m
+
+[92m[PASS] Home page: / - OK[0m
+[92m[PASS] Markdown test page: /test-markdown - OK[0m
+
+[95m[1m============================================================
+TEST SUMMARY
+============================================================[0m
+
+Passed: [92m10[0m
+Failed: [91m1[0m
+Warnings: [93m1[0m
+
+[91mErrors:[0m
+  1. Query exception: object of type 'NoneType' has no len()
+
+[93mWarnings:[0m
+  1. File listing: Status 404
+
+[96m[INFO] Cleaned up test file: test_sample.txt[0m

@@ -1,7 +1,8 @@
 """
 Query blueprint - handles querying file search stores
 """
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
+import traceback
 from app.services.gemini_service import GeminiService
 from app.services.response_modes import get_mode_config
 from app.services.category_service import validate_categories
@@ -29,10 +30,20 @@ def query():
         - categories: List of category names to filter by (optional)
     """
     try:
+        # Log incoming request
+        current_app.logger.debug(f"Query request received: {request.json}")
+
+        # Validate request JSON
+        if not request.json:
+            current_app.logger.warning("Query request with no JSON body")
+            return jsonify({'success': False, 'error': 'Invalid JSON request'}), 400
+
         question = request.json.get('question')
         store_name = request.json.get('store_name', 'my-file-search-store')
         mode = request.json.get('mode', 'quick')  # Default to quick mode
         categories = request.json.get('categories', [])
+
+        current_app.logger.info(f"Processing query: store='{store_name}', mode='{mode}', categories={categories}")
 
         if not question:
             return jsonify({'success': False, 'error': 'No question provided'}), 400
@@ -81,12 +92,14 @@ def query():
 
         # Query with file search and mode-specific settings
         # TODO: In future, pass specific file IDs to Gemini for category filtering
+        current_app.logger.info(f"Calling Gemini API with store_id: {store_id}")
         answer = gemini_service.query_with_file_search(
             question=question,
             store_id=store_id,
             system_prompt=mode_config['system_prompt'],
             temperature=mode_config['temperature']
         )
+        current_app.logger.info(f"Gemini API response received: {len(answer) if answer else 0} chars")
 
         response = {
             'success': True,
@@ -104,7 +117,26 @@ def query():
         return jsonify(response)
 
     except Exception as e:
+        # Log full error details with stack trace
+        error_msg = f"Query endpoint error: {type(e).__name__}: {str(e)}"
+        current_app.logger.error(error_msg, exc_info=True)
+
+        # Log additional context
+        current_app.logger.error(f"Failed query details - Store: {store_name}, Question: {question[:100] if question else 'None'}")
+
+        # Print to console for immediate visibility
+        print(f"\n{'='*60}")
+        print(f"QUERY ERROR OCCURRED:")
+        print(f"Error Type: {type(e).__name__}")
+        print(f"Error Message: {str(e)}")
+        print(f"Store: {store_name}")
+        print(f"Question: {question[:100] if question else 'None'}")
+        print(f"Stack Trace:")
+        print(traceback.format_exc())
+        print(f"{'='*60}\n")
+
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': str(e),
+            'error_type': type(e).__name__
         }), 500
