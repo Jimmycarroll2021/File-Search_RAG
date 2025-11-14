@@ -14,6 +14,7 @@ function openBulkUploadModal() {
     const modal = document.getElementById('bulkUploadModal');
     modal.classList.add('active');
     resetBulkUpload();
+    loadStoresForBulkUpload(); // Load stores when modal opens
 }
 
 /**
@@ -174,6 +175,7 @@ async function startBulkUpload() {
     // Disable buttons
     document.getElementById('scanDirectoryBtn').disabled = true;
     document.getElementById('startUploadBtn').disabled = true;
+    document.getElementById('startUploadBtn').textContent = 'Uploading...';
 
     // Show progress section
     document.getElementById('uploadProgressSection').style.display = 'block';
@@ -369,6 +371,11 @@ async function loadStoresForBulkUpload() {
                 option.textContent = store;
                 select.appendChild(option);
             });
+
+            // If only one store exists, select it by default
+            if (data.stores.length === 1) {
+                select.value = data.stores[0];
+            }
         }
     } catch (error) {
         console.error('Error loading stores:', error);

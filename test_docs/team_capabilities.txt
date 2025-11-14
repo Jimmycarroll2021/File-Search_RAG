@@ -1,0 +1,167 @@
+ACME Corporation - Team Capabilities
+
+CLOUD ARCHITECTURE TEAM (35 people)
+-----------------------------------
+Senior Cloud Architects (10):
+- AWS Certified Solutions Architect Professional: 8
+- Azure Solutions Architect Expert: 6
+- Google Cloud Professional Architect: 4
+- Average experience: 12+ years
+- Security clearances: 7 NV1, 3 NV2
+
+Cloud Solutions Architects (25):
+- AWS SA Associate: 25
+- Azure Administrator: 20
+- Average experience: 6+ years
+- Security clearances: 15 NV1, 5 Baseline
+
+Key Skills:
+- Multi-cloud architecture design
+- Cloud migration strategy & execution
+- Infrastructure as Code (Terraform, CloudFormation)
+- Microservices architecture
+- Container orchestration (Kubernetes, ECS)
+
+SECURITY & COMPLIANCE TEAM (45 people)
+--------------------------------------
+IRAP Assessors (5):
+- PROTECTED level certification
+- Average experience: 15+ years
+- All hold NV2 clearance
+
+Senior Security Consultants (15):
+- CISSP certified: 12
+- CISM certified: 10
+- Average experience: 10+ years
+- Security clearances: 8 NV2, 7 NV1
+
+Security Analysts (25):
+- CompTIA Security+: 25
+- CEH certified: 15
+- Average experience: 5+ years
+- Security clearances: 12 NV1, 13 Baseline
+
+Specializations:
+- PSPF compliance assessments
+- E8 implementation
+- ACSC Essential Eight
+- Penetration testing
+- Security Operations Center (SOC)
+- Incident response
+
+DEVOPS & AUTOMATION TEAM (55 people)
+------------------------------------
+Senior DevOps Engineers (20):
+- AWS DevOps Professional: 15
+- Azure DevOps Engineer: 12
+- Average experience: 8+ years
+- Security clearances: 10 NV1, 10 Baseline
+
+DevOps Engineers (35):
+- AWS/Azure certifications: 30
+- Average experience: 4+ years
+- Security clearances: 15 NV1, 20 Baseline
+
+Technical Stack:
+- CI/CD: Jenkins, GitLab CI, GitHub Actions, Azure DevOps
+- IaC: Terraform, Ansible, CloudFormation, ARM templates
+- Containers: Docker, Kubernetes, ECS, AKS
+- Monitoring: CloudWatch, Azure Monitor, Datadog, Splunk
+- Scripting: Python, Bash, PowerShell
+
+PROJECT MANAGEMENT TEAM (25 people)
+-----------------------------------
+Senior Project Managers (8):
+- PMP certified: 8
+- Prince2 Practitioner: 6
+- Average experience: 12+ years
+
+Project Managers (12):
+- PMP/Prince2: 10
+- Average experience: 6+ years
+
+Scrum Masters (5):
+- CSM certified: 5
+- Average experience: 5+ years
+
+Methodologies:
+- Agile/Scrum
+- Waterfall
+- Hybrid approaches
+- Government procurement processes
+
+DEVELOPMENT TEAM (80 people)
+----------------------------
+Full Stack Developers (50):
+- .NET Core, Node.js, React, Angular
+- Average experience: 5+ years
+- Security clearances: 20 Baseline
+
+Frontend Developers (20):
+- React, Angular, Vue.js
+- Average experience: 4+ years
+
+Backend Developers (10):
+- Java, Python, .NET
+- Average experience: 6+ years
+
+DATA & ANALYTICS TEAM (30 people)
+---------------------------------
+Data Scientists (10):
+- Masters/PhD in Data Science: 8
+- Average experience: 7+ years
+
+Data Engineers (15):
+- AWS/Azure Data certifications: 12
+- Average experience: 5+ years
+
+BI Developers (5):
+- Power BI, Tableau expertise
+- Average experience: 4+ years
+
+Technologies:
+- Python, R, SQL
+- Apache Spark, Databricks
+- Machine Learning frameworks
+- Power BI, Tableau, Qlik
+
+SUPPORT OPERATIONS (60 people)
+------------------------------
+24/7 Support coverage across 3 shifts
+
+L3 Support Engineers (15):
+- Advanced troubleshooting
+- Escalation point
+- Average experience: 8+ years
+
+L2 Support Engineers (25):
+- Standard support requests
+- Average experience: 4+ years
+
+L1 Support Technicians (20):
+- First line support
+- Average experience: 2+ years
+
+Support Capabilities:
+- 24/7/365 coverage
+- 15-minute response time (critical)
+- ITIL v4 certified processes
+- Remote and on-site support
+- Multi-language support
+
+TRAINING & ENABLEMENT TEAM (10 people)
+--------------------------------------
+Senior Training Consultants (5):
+- Certified trainers in AWS, Azure, Security
+- Average experience: 10+ years
+
+Training Coordinators (5):
+- Content development
+- Learning management
+
+Training Offerings:
+- Cloud fundamentals
+- Security awareness
+- DevOps practices
+- Custom workshops
+- Certification preparation

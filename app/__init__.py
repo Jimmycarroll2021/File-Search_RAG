@@ -39,9 +39,20 @@ def create_app(config_name='default'):
     except OSError:
         pass
 
+    # Ensure database tables exist on startup
+    with app.app_context():
+        try:
+            # Import models to ensure they're registered
+            from app import models
+            # Create tables if they don't exist
+            db.create_all()
+            app.logger.info('Database tables initialized')
+        except Exception as e:
+            app.logger.error(f'Error creating database tables: {str(e)}')
+
     # Register blueprints
     try:
-        from app.routes.files import files_bp
+        from app.routes.files import files_bp, load_stores_from_database
         from app.routes.query import query_bp
         from app.routes.categories import categories_bp
         from app.routes.prompts import prompts_bp
@@ -51,6 +62,10 @@ def create_app(config_name='default'):
         app.register_blueprint(categories_bp)
         app.register_blueprint(prompts_bp)
         app.register_blueprint(export_bp)
+
+        # Load existing stores from database into memory
+        with app.app_context():
+            load_stores_from_database()
     except ImportError:
         # Blueprints not yet created, skip for now
         pass

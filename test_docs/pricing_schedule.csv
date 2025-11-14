@@ -1,0 +1,21 @@
+Service Category,Service Description,Unit,Rate (AUD),Min Hours,Max Hours,Security Clearance Required
+Cloud Architecture,Senior Cloud Architect,Hourly,$250,8,2080,NV1
+Cloud Architecture,Cloud Solutions Architect,Hourly,$200,8,2080,Baseline
+DevOps Engineering,Senior DevOps Engineer,Hourly,$220,8,2080,NV1
+DevOps Engineering,DevOps Engineer,Hourly,$180,8,2080,Baseline
+Security,Senior Security Consultant,Hourly,$280,8,2080,NV2
+Security,Security Analyst,Hourly,$190,8,2080,NV1
+Project Management,Senior Project Manager,Hourly,$230,8,2080,Baseline
+Project Management,Scrum Master,Hourly,$180,8,2080,None
+Development,Full Stack Developer,Hourly,$170,8,2080,Baseline
+Development,Frontend Developer,Hourly,$150,8,2080,None
+Data Analytics,Data Scientist,Hourly,$200,8,2080,Baseline
+Data Analytics,Data Engineer,Hourly,$180,8,2080,Baseline
+Support,L3 Support Engineer,Hourly,$160,24,8760,Baseline
+Support,L2 Support Engineer,Hourly,$130,24,8760,None
+Managed Services,Cloud Operations,Monthly,$15000,730,730,Baseline
+Managed Services,Security Monitoring,Monthly,$20000,730,730,NV1
+Training,Cloud Training - Per Day,Daily,$3500,8,8,None
+Training,Security Training - Per Day,Daily,$4000,8,8,Baseline
+Consulting,Strategic Consulting,Hourly,$300,4,160,None
+Consulting,Technical Assessment,Fixed,$8000,40,40,Baseline

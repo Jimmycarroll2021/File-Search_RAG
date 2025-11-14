@@ -1,0 +1,248 @@
+ACME Corporation - Compliance & Security Frameworks
+
+PROTECTIVE SECURITY POLICY FRAMEWORK (PSPF)
+===========================================
+
+PSPF Compliance Status: FULLY COMPLIANT
+
+Core Requirements Met:
+----------------------
+GOVERNANCE (GOV):
+✓ GOV-1: Governance framework established
+✓ GOV-2: Security roles and responsibilities defined
+✓ GOV-3: Security risk management process
+✓ GOV-4: Annual security assessment program
+✓ GOV-5: Security incident reporting procedures
+
+INFORMATION SECURITY (INFOSEC):
+✓ INFOSEC-1: Information classification system
+✓ INFOSEC-2: Handling of classified information
+✓ INFOSEC-3: ICT security controls
+✓ INFOSEC-4: Secure communication systems
+✓ INFOSEC-5: Cryptographic controls
+✓ INFOSEC-6: Access control mechanisms
+✓ INFOSEC-7: Media sanitization procedures
+✓ INFOSEC-8: Security of cloud services
+✓ INFOSEC-9: Secure disposal processes
+
+PERSONNEL SECURITY (PERSEC):
+✓ PERSEC-1: Pre-employment screening
+✓ PERSEC-2: Ongoing security awareness training
+✓ PERSEC-3: Security clearance management
+✓ PERSEC-4: Insider threat program
+✓ PERSEC-5: Separation and transfer procedures
+
+PHYSICAL SECURITY (PHYSEC):
+✓ PHYSEC-1: Security zones implementation
+✓ PHYSEC-2: Access control systems
+✓ PHYSEC-3: Intrusion detection
+✓ PHYSEC-4: CCTV monitoring
+✓ PHYSEC-5: Secure areas for classified work
+
+Evidence Documentation:
+- PSPF Compliance Register (updated quarterly)
+- Annual PSPF assessment reports
+- Security incident logs
+- Training completion records
+- Physical security audit results
+
+INFORMATION SECURITY REGISTERED ASSESSORS PROGRAM (IRAP)
+========================================================
+
+IRAP Assessment Level: PROTECTED
+
+Assessment Date: March 2024
+Next Assessment: March 2025
+Assessor: John Smith (IRAP #1234)
+
+Controls Assessed:
+-----------------
+ACSC Essential Eight:
+✓ Application control
+✓ Patch applications
+✓ Configure Microsoft Office macro settings
+✓ User application hardening
+✓ Restrict administrative privileges
+✓ Patch operating systems
+✓ Multi-factor authentication
+✓ Regular backups
+
+ACSC ISM Controls:
+✓ 450+ controls assessed
+✓ Security classification: PROTECTED
+✓ All mandatory controls implemented
+✓ Risk-based approach for advisory controls
+
+System Security Plan (SSP):
+- Comprehensive SSP maintained
+- Updated monthly
+- Change management process
+- Continuous monitoring program
+
+Cloud Security:
+✓ AWS: Assessed and approved for PROTECTED
+✓ Azure: Assessed and approved for PROTECTED
+✓ Security architecture diagrams
+✓ Data flow diagrams
+✓ Network segmentation
+
+ESSENTIAL EIGHT (E8) MATURITY
+=============================
+
+Current Maturity Level: MATURITY LEVEL 3
+
+Detailed Assessment:
+-------------------
+1. Application Control - ML3
+   - Application whitelisting implemented
+   - Centralized management via Microsoft Intune
+   - Exception process documented
+   - Monthly review of allowed applications
+
+2. Patch Applications - ML3
+   - 48-hour patching for extreme risk
+   - 2-week patching for high/moderate risk
+   - Automated vulnerability scanning
+   - Patch compliance reporting
+
+3. Configure Microsoft Office Macros - ML3
+   - Macros disabled by default
+   - Only signed macros from trusted publishers
+   - Publisher verification process
+   - User awareness training
+
+4. User Application Hardening - ML3
+   - Web browser hardening implemented
+   - Flash and Java blocked
+   - PDF viewer sandboxing
+   - Regular security updates
+
+5. Restrict Administrative Privileges - ML3
+   - Just-in-time admin access
+   - Privileged access management (PAM)
+   - Separate admin accounts
+   - Regular privileged account reviews
+
+6. Patch Operating Systems - ML3
+   - Automated patching system
+   - 48-hour critical patch deployment
+   - Compliance monitoring dashboard
+   - Quarterly OS upgrade program
+
+7. Multi-factor Authentication - ML3
+   - MFA for all users (internal and external)
+   - Hardware tokens for privileged accounts
+   - Conditional access policies
+   - MFA bypass monitoring
+
+8. Regular Backups - ML3
+   - Daily incremental backups
+   - Weekly full backups
+   - Offsite backup storage
+   - Quarterly restoration testing
+   - Immutable backup copies
+
+Evidence:
+- E8 assessment report (quarterly)
+- Continuous compliance monitoring
+- Remediation action plans
+- Executive dashboard
+
+ISO 27001:2013 CERTIFICATION
+============================
+
+Certificate Number: ISO27001-ACME-2024
+Certification Body: BSI Group
+Issue Date: January 2024
+Expiry Date: January 2027
+
+Scope:
+"Provision of cloud infrastructure services, cybersecurity consulting, and managed IT services for government and enterprise clients"
+
+Clauses Implemented:
+✓ Clause 4: Context of the organization
+✓ Clause 5: Leadership
+✓ Clause 6: Planning
+✓ Clause 7: Support
+✓ Clause 8: Operation
+✓ Clause 9: Performance evaluation
+✓ Clause 10: Improvement
+
+Annex A Controls:
+- 114 controls assessed
+- 112 controls applicable and implemented
+- 2 controls excluded with justification
+- Zero non-conformities in last audit
+
+ISMS Documentation:
+- Information Security Policy
+- Risk Assessment & Treatment Plan
+- Statement of Applicability
+- Internal audit program
+- Management review records
+
+ADDITIONAL CERTIFICATIONS
+=========================
+
+SOC 2 Type II:
+- Service Organization Control
+- Trust Services Criteria: Security, Availability
+- Annual audit by independent CPA firm
+- Zero exceptions in latest report
+
+PCI DSS v3.2.1:
+- For clients requiring payment processing
+- Quarterly network scans
+- Annual on-site assessment
+- Compliant since 2018
+
+SECURITY CONTROLS SUMMARY
+=========================
+
+Technical Controls:
+- Next-generation firewalls (Palo Alto)
+- Intrusion detection/prevention systems
+- SIEM (Splunk Enterprise Security)
+- Endpoint detection and response (CrowdStrike)
+- Data loss prevention (DLP)
+- Email security gateway
+- Web application firewall (WAF)
+- Vulnerability management (Qualys)
+- Privileged access management (CyberArk)
+
+Administrative Controls:
+- Security policies (50+ documents)
+- Standard operating procedures
+- Change management process
+- Incident response plan
+- Business continuity plan
+- Disaster recovery plan
+- Security awareness training program
+- Third-party risk management
+
+Physical Controls:
+- Biometric access control
+- 24/7 CCTV monitoring
+- Security guards
+- Visitor management system
+- Secure equipment destruction
+- Environmental monitoring
+
+AUDIT TRAIL
+===========
+
+Recent Audits:
+- IRAP Assessment: March 2024 (PASS)
+- ISO 27001 Surveillance: February 2024 (0 non-conformities)
+- SOC 2 Type II: December 2023 (0 exceptions)
+- Internal Security Audit: Monthly (ongoing)
+
+Next Scheduled:
+- ISO 27001 Surveillance: February 2025
+- IRAP Re-assessment: March 2025
+- SOC 2 Type II: December 2024
+
+Contact for Compliance Queries:
+Chief Information Security Officer (CISO)
+Email: ciso@acmecorp.com.au
+Phone: +61 2 9000 0000

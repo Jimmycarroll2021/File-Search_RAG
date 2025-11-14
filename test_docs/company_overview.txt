@@ -1,0 +1,51 @@
+ACME Corporation - Company Overview
+
+Established: 2010
+Headquarters: Sydney, Australia
+Industry: Technology Consulting & Cloud Services
+Employees: 450+
+
+About Us:
+ACME Corporation is a leading provider of cloud infrastructure and cybersecurity solutions. We specialize in helping government and enterprise clients modernize their IT infrastructure with secure, scalable cloud platforms.
+
+Core Services:
+1. Cloud Migration & Architecture
+2. Cybersecurity & Compliance (PSPF, IRAP, E8)
+3. DevOps & Automation
+4. Managed IT Services
+5. Data Analytics & AI
+
+Key Achievements:
+- IRAP Assessed to PROTECTED level
+- ISO 27001 Certified
+- Over 200 successful cloud migrations
+- 99.99% uptime SLA achievement
+- Winner of 2024 Cloud Excellence Award
+
+Government Experience:
+We have successfully delivered projects for:
+- Department of Defence
+- Department of Home Affairs
+- Australian Tax Office
+- State Government Agencies
+- Healthcare NSW
+
+Our Approach:
+We follow a rigorous methodology that ensures:
+- Security-first design
+- Compliance with Australian government standards
+- Agile project delivery
+- Knowledge transfer and training
+- 24/7 support and monitoring
+
+Certifications:
+- IRAP Assessor
+- AWS Advanced Partner
+- Microsoft Gold Partner
+- Cisco Gold Partner
+- VMware Enterprise Partner
+
+Contact:
+Email: info@acmecorp.com.au
+Phone: 1300 ACME CORP
+Website: www.acmecorp.com.au

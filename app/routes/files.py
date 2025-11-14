@@ -18,8 +18,22 @@ files_bp = Blueprint('files', __name__, url_prefix='/api/files')
 # Initialize Gemini service
 gemini_service = GeminiService()
 
-# Store for file search stores (in production, use a database)
+# Store for file search stores (cached from database)
 file_search_stores = {}
+
+
+def load_stores_from_database():
+    """Load all stores from database into memory cache on startup."""
+    try:
+        from flask import current_app
+        with current_app.app_context():
+            db_stores = Store.query.all()
+            for store in db_stores:
+                file_search_stores[store.name] = store.gemini_store_id
+            current_app.logger.info(f'Loaded {len(db_stores)} stores from database')
+    except Exception as e:
+        # This is okay during initial setup or testing
+        pass
 
 
 @files_bp.route('/create_store', methods=['POST'])
@@ -27,12 +41,33 @@ def create_store():
     """Create a new file search store"""
     try:
         store_name = request.json.get('store_name', 'my-file-search-store')
+        display_name = request.json.get('display_name', store_name)
 
-        # Create the file search store
+        # Check if store already exists in database
+        existing_store = Store.query.filter_by(name=store_name).first()
+        if existing_store:
+            # Load into memory cache if not already there
+            file_search_stores[store_name] = existing_store.gemini_store_id
+            return jsonify({
+                'success': True,
+                'store_name': existing_store.gemini_store_id,
+                'message': f'Store "{store_name}" already exists'
+            })
+
+        # Create the file search store in Gemini
         file_search_store = gemini_service.create_file_search_store(store_name)
 
-        # Store it in memory (use database in production)
+        # Store it in memory
         file_search_stores[store_name] = file_search_store.name
+
+        # Save to database
+        db_store = Store(
+            name=store_name,
+            gemini_store_id=file_search_store.name,
+            display_name=display_name
+        )
+        db.session.add(db_store)
+        db.session.commit()
 
         return jsonify({
             'success': True,
@@ -40,6 +75,7 @@ def create_store():
             'message': f'File search store "{store_name}" created successfully'
         })
     except Exception as e:
+        db.session.rollback()
         return jsonify({
             'success': False,
             'error': str(e)
@@ -137,10 +173,27 @@ def upload_file():
 @files_bp.route('/list_stores', methods=['GET'])
 def list_stores():
     """List all file search stores"""
-    return jsonify({
-        'success': True,
-        'stores': list(file_search_stores.keys())
-    })
+    try:
+        # Get stores from database
+        db_stores = Store.query.all()
+
+        # Load stores into memory cache if not already there
+        for store in db_stores:
+            if store.name not in file_search_stores:
+                file_search_stores[store.name] = store.gemini_store_id
+
+        # Return store information
+        stores_list = [store.to_dict() for store in db_stores]
+
+        return jsonify({
+            'success': True,
+            'stores': stores_list
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
 
 
 @files_bp.route('/bulk_upload', methods=['POST'])

@@ -94,7 +94,7 @@
 
         const formData = new FormData();
         formData.append('file', selectedFile);
-        formData.append('store_name', storeName.value);
+        formData.append('store_name', storeName.value || 'my-file-search-store');
 
         // Show animated upload message
         uploadStatus.innerHTML = `
@@ -106,7 +106,7 @@
         uploadStatus.className = 'status-message show success';
 
         try {
-            const response = await fetch('/upload_file', {
+            const response = await fetch('/api/files/upload_file', {
                 method: 'POST',
                 body: formData
             });
@@ -155,14 +155,15 @@
         queryStatus.classList.remove('show');
 
         try {
-            const response = await fetch('/query', {
+            const response = await fetch('/api/query/query', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     question: question,
-                    store_name: storeName.value
+                    store_name: storeName.value,
+                    mode: window.selectedMode || 'quick'
                 })
             });
 
