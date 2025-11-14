@@ -179,8 +179,22 @@ async function startBulkUpload() {
     document.getElementById('uploadProgressSection').style.display = 'block';
     resetProgressDisplay();
 
+    // Start animated progress bar
+    const progressBar = document.getElementById('uploadProgressBar');
+    progressBar.classList.add('animating');
+    progressBar.style.width = '10%'; // Show initial progress
+
     try {
-        showStatus('Starting bulk upload...', 'info');
+        showStatus('Uploading and indexing files...', 'info');
+
+        // Simulate gradual progress during upload
+        const totalFiles = scanResults.total;
+        let simulatedProgress = 0;
+        const progressInterval = setInterval(() => {
+            simulatedProgress += Math.random() * 15;
+            if (simulatedProgress > 85) simulatedProgress = 85; // Cap at 85% until real data arrives
+            updateProgressDisplay(Math.floor((simulatedProgress / 100) * totalFiles), totalFiles, 0, 0, 0);
+        }, 500);
 
         const response = await fetch('/api/files/bulk_upload', {
             method: 'POST',
@@ -195,6 +209,9 @@ async function startBulkUpload() {
             })
         });
 
+        // Stop simulated progress
+        clearInterval(progressInterval);
+
         const data = await response.json();
 
         if (!response.ok) {
@@ -208,8 +225,9 @@ async function startBulkUpload() {
         // Store results
         uploadResults = data;
 
-        // Update progress
-        updateProgressDisplay(data.success_count, data.total, data.success_count, data.failed_count, data.skipped_count);
+        // Stop animation and update with final progress
+        progressBar.classList.remove('animating');
+        updateProgressDisplay(data.total, data.total, data.success_count, data.failed_count, data.skipped_count || 0);
 
         // Display results table
         displayUploadResults(data);
@@ -218,6 +236,9 @@ async function startBulkUpload() {
 
     } catch (error) {
         console.error('Upload error:', error);
+        const progressBar = document.getElementById('uploadProgressBar');
+        progressBar.classList.remove('animating');
+        progressBar.style.backgroundColor = '#dc3545'; // Red for error
         showStatus(`Error: ${error.message}`, 'error');
     } finally {
         document.getElementById('scanDirectoryBtn').disabled = false;

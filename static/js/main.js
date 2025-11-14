@@ -96,7 +96,14 @@
         formData.append('file', selectedFile);
         formData.append('store_name', storeName.value);
 
-        showStatus(uploadStatus, 'Uploading and indexing file...', 'success', true);
+        // Show animated upload message
+        uploadStatus.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div class="upload-spinner"></div>
+                <span>Uploading and indexing "${selectedFile.name}"...</span>
+            </div>
+        `;
+        uploadStatus.className = 'status-message show success';
 
         try {
             const response = await fetch('/upload_file', {
@@ -107,12 +114,27 @@
             const data = await response.json();
 
             if (data.success) {
-                showStatus(uploadStatus, data.message, 'success');
+                uploadStatus.innerHTML = `✓ ${data.message}`;
+                uploadStatus.className = 'status-message show success';
+                if (data.category) {
+                    uploadStatus.innerHTML += `<br><small>Category: ${data.category}</small>`;
+                }
             } else {
-                showStatus(uploadStatus, 'Error: ' + data.error, 'error');
+                uploadStatus.innerHTML = `✗ Error: ${data.error}`;
+                uploadStatus.className = 'status-message show error';
             }
+
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                uploadStatus.classList.remove('show');
+            }, 5000);
         } catch (error) {
-            showStatus(uploadStatus, 'Error: ' + error.message, 'error');
+            uploadStatus.innerHTML = `✗ Error: ${error.message}`;
+            uploadStatus.className = 'status-message show error';
+
+            setTimeout(() => {
+                uploadStatus.classList.remove('show');
+            }, 5000);
         }
     }
 

@@ -277,6 +277,29 @@
     color: white;
     font-weight: 500;
     font-size: 13px;
+    position: relative;
+}
+
+.progress-bar-fill.animating {
+    background: linear-gradient(
+        90deg,
+        var(--primary-color, #4285f4) 0%,
+        var(--primary-hover, #3367d6) 25%,
+        var(--primary-color, #4285f4) 50%,
+        var(--primary-hover, #3367d6) 75%,
+        var(--primary-color, #4285f4) 100%
+    );
+    background-size: 200% 100%;
+    animation: progressShimmer 2s linear infinite;
+}
+
+@keyframes progressShimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 .progress-text {
@@ -438,6 +461,23 @@
     margin: 0;
     font-size: 14px;
     color: var(--text-secondary, #666666);
+}
+
+/* Upload Spinner */
+
+.upload-spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Animations */
